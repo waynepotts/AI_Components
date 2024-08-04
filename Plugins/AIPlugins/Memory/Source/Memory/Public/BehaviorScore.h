@@ -8,7 +8,7 @@
 #include "BehaviorScore.generated.h"
 
 // This class does not need to be modified.
-UINTERFACE(MinimalAPI)
+UINTERFACE(MinimalAPI, BlueprintType)
 class UBehaviorScore : public UInterface
 {
 	GENERATED_BODY()
@@ -25,6 +25,24 @@ class MEMORY_API IBehaviorScore
 
 public:
 
-	virtual FBehaviorAction Score(int32 Level) const = 0;
-	virtual void ScoreAll() const = 0;
+	/**
+	* Used to calculate the score for the behavior action
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Score Behavior")
+	FBehaviorAction ScoreLevel(int32 Level);
+
+	/**
+	* Gets the current behavior action
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Score Behavior")
+	FBehaviorAction GetLevelScore(int32 Level);
+
+	/**
+	* Updates the current behavior action
+	*/
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Score Behavior")
+	void SetLevelScore(FBehaviorAction Action);
+
+	UFUNCTION(BlueprintImplementableEvent, BlueprintCallable, Category = "Score Behavior")
+	 void ScoreAll();
 };

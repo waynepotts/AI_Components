@@ -26,5 +26,5 @@ public:
 	AActor* Actor;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Test Actor Range")
-	float Range{ 100.0f};
+	double Range{ 1000.0};
 };

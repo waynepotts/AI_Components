@@ -12,9 +12,11 @@ FBehaviorAction UTestActorRangeBehavior_Strategy::ScoreStrategy()
 {
 	check(Actor != nullptr);
 	check(OtherActor != nullptr);
-	check(Range >= 0.0f);
+	check(Range >= 0.0);
 	FBehaviorAction Act = Super::ScoreStrategy();
-	
-
+	if (FVector::Distance(Actor->GetActorLocation(), OtherActor->GetActorLocation()) <= Range)
+	{
+		Act.Priority = PassScore > Act.Priority ? PassScore : Act.Priority;
+	}
 	return Act;
 }

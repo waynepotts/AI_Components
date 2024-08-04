@@ -35,6 +35,12 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent, Category = "Behavior Strategy", meta = (DisplayName = "Score"))
     FBehaviorAction ReceiveScoreStrategy();
 
+protected:
+    /**
+    * The value returned if this strategy passes
+    */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Behavior Strategy")
+    double PassScore{ 0.1 };
 };
 USTRUCT(BlueprintType)
 struct MEMORY_API FBehaviorActionArray
